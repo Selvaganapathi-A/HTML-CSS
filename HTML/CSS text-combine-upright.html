@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Text-Align</title>
+        <style>
+            .container {
+                border-style: solid;
+                border-image: linear-gradient(to bottom right, red, yellow) 1 100%;
+                margin: 0 auto;
+                width: 60%;
+
+                font: 0.9em/1.5em Serif;
+
+                /* writing-mode: vertical-lr; */
+
+                /* Keyword values */
+                /* text-combine-upright: none; */
+                /* text-combine-upright: all; */
+                /* text-combine-upright: all; */
+
+                /* Digits values */
+                /* text-combine-upright: digits; */
+                /* fits 2 consecutive digits horizontally inside vertical text */
+                /* text-combine-upright: digits 3; */
+                /* fits up to 4 consecutive digits horizontally inside vertical text */
+
+                /* Global values */
+                /* text-combine-upright: inherit; */
+                /* text-combine-upright: initial; */
+                /* text-combine-upright: revert; */
+                /* text-combine-upright: revert-layer; */
+                /* text-combine-upright: unset; */
+            }
+            .container > .exampleText {
+                writing-mode: vertical-lr;
+                text-combine-upright: all;
+                font: 36px serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <p lang="ja" class="exampleText">平成20年4月16日に</p>
+        </div>
+    </body>
+</html>
