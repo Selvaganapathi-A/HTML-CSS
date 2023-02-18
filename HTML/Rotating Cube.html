@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cube</title>
+        <style>
+            .container {
+                width: 100%;
+                height: 80vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .scene {
+                width: 200px;
+                height: 200px;
+                perspective: 600px;
+            }
+            .cube {
+                width: 200px;
+                height: 200px;
+                position: relative;
+                transform-style: preserve-3d;
+                transition-duration: 2s;
+            }
+            .face {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 200px;
+                height: 200px;
+                font-family: "cascadia code pl";
+                font-size: x-large;
+                color: #fff;
+                opacity: 1;
+                background-image: radial-gradient(#00f 20%, #fff 50%, #f0f 55%, #fff 60%, #f0f 75%);
+            }
+            .c_front {
+                transform: rotateY(-10deg) translateZ(100px);
+            }
+            .c_back {
+                transform: rotateY(170deg) translateZ(100px);
+            }
+            .c_left {
+                transform: rotateY(80deg) translateZ(100px);
+            }
+            .c_right {
+                transform: rotateY(260deg) translateZ(100px);
+            }
+            .c_top {
+                transform: rotateX(90deg) rotateZ(10deg) translateZ(100px);
+            }
+            .c_bottom {
+                transform: rotateX(-90deg) rotateZ(-10deg) translateZ(100px);
+            }
+
+            .cube.show_front {
+                transform: rotateY(0deg);
+            }
+            .cube.show_back {
+                transform: rotateY(180deg);
+            }
+            .cube.show_left {
+                transform: rotateY(270deg);
+            }
+            .cube.show_right {
+                transform: rotateY(90deg);
+            }
+            .cube.show_bottom {
+                transform: rotateX(90deg);
+            }
+            .cube.show_top {
+                transform: rotateX(-90deg);
+            }
+            .radio-group {
+                border: none;
+                background-color: #bbb;
+                width: fit-content;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="scene">
+                <div class="cube">
+                    <div class="face c_front">
+                        <p><span> front</span></p>
+                    </div>
+                    <div class="face c_back">
+                        <p><span> back</span></p>
+                    </div>
+                    <div class="face c_left">
+                        <p><span> left</span></p>
+                    </div>
+                    <div class="face c_right">
+                        <p><span> right </span></p>
+                    </div>
+                    <div class="face c_top">
+                        <p><span> top </span></p>
+                    </div>
+                    <div class="face c_bottom">
+                        <p><span> bottom </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <fieldset class="radio-group">
+            <input type="radio" name="radio_group" id="top" value="top" />
+            <label for="top">Top</label>
+            <input type="radio" name="radio_group" id="front" value="front" />
+            <label for="front">Front</label>
+            <input type="radio" name="radio_group" id="left" value="left" />
+            <label for="">Left</label>
+            <input type="radio" name="radio_group" id="back" value="back" />
+            <label for="back">Back</label>
+            <input type="radio" name="radio_group" id="right" value="right" />
+            <label for="right">Right</label>
+            <input type="radio" name="radio_group" id="bottom" value="bottom" />
+            <label for="bottom">Bottom</label>
+        </fieldset>
+    </body>
+    <script>
+        let cube = document.querySelector(".cube");
+        let radio_group = document.querySelector(".radio-group");
+        let currentClass = "";
+        console.log(cube, radio_group);
+        function rotateCube() {
+            let selectedRadioButton = radio_group.querySelector(":checked");
+            let show_side = "show_" + selectedRadioButton.value;
+            console.log(selectedRadioButton, show_side);
+
+            if (currentClass) {
+                cube.classList.remove(currentClass);
+            }
+            cube.classList.add(show_side);
+            currentClass = show_side;
+        }
+        radio_group.addEventListener("change", rotateCube);
+    </script>
+</html>
